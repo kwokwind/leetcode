@@ -16,12 +16,12 @@ public:
                 return last;
             
             if (nums[first] <= nums[mid]) {
-                if (nums[first] <= target && target < nums[mid])
+                if (nums[first] < target && target < nums[mid])
                     last = mid;
                 else
                     first = mid + 1;
             } else {
-                if (nums[mid] < target && target <= nums[last])
+                if (nums[mid] < target && target < nums[last])
                     first = mid + 1;
                 else
                     last = mid;
