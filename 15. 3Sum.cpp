@@ -8,10 +8,6 @@ public:
         const int target = 0;
         sort(nums.begin(), nums.end());
         
-        for (auto a : nums) {
-            cout << a << ",";
-        }
-        
         auto last = nums.end();
         for(auto i=nums.begin(); i<last-2; ++i) {
             if (i > nums.begin() && *i == *(i-1)) continue;
@@ -24,7 +20,7 @@ public:
                     while (j < k && *j == *(j-1)) ++j;
                 } else if ((*i + *j + *k) > target) {
                     --k;
-                    while (k > j && *k == *(k+1)) --k;
+                    while (j < k && *k == *(k+1)) --k;
                 } else {
                     ret.push_back({*i,*j,*k});
                     ++j;
