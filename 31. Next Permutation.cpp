@@ -55,3 +55,11 @@ public:
         return;
     }
 };
+
+/*
+Example: 6  8  7  4  3  2
+step1:  >6  8  7  4  3  2  // from right to left, find the first digit(partition number) which violate the increase trend
+step2:   6  8 >7  4  3  2  // from right to left, find the first digit which is larger than partition number, it is change number
+step3:   7  8  6  4  3  2  // swap partition number and change number
+step4:   7  2  3  4  6  8  // reverse all the digits on the right of partition index(now it is change number)
+*/
