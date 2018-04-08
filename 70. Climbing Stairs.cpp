@@ -19,16 +19,25 @@ Explanation:  There are three ways to climb to the top.
 3. 2 steps + 1 step
 */
 
+// f(n) = f(n-1) + f(n-2)
 class Solution {
 public:
     int climbStairs(int n) {
-        int prev = 0;
-        int curr = 1;
-        for (int i=1; i<=n; ++i) {
-            int temp = curr;
-            curr = curr + prev;
-            prev = temp;
+        if(n == 1)
+            return 1;
+        
+        if(n == 2)
+            return 2;
+        
+        int a = 0; // f(n-2)
+        int b = 1; // f(n-1)
+        int ret = 0;
+        
+        for(int i=3; i<=n; ++i) {
+            ret = b + a;
+            a = b;
+            b = ret;
         }
-        return curr;
+        return ret;
     }
 };
