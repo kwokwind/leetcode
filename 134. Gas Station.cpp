@@ -24,22 +24,18 @@ public:
         for (auto s : startPoints) {
             int i = s;
             int rest = 0;
-            while (1) {
+            do {
                 rest += gas[i] - cost[i];
                 if (rest >= 0) {
                     i++;
-                    if (i == gas.size())
-                        i = 0;
-                    
-                    if (i == s) {
-                        ret = s;
-                        break;
-                    }
+                    if (i == gas.size()) i = 0;
+                    // return to start point, it is a solution
+                    if (i == s)  ret = s;
                 } else {
                     // solution is broken, break and try next start point
                     break;
                 }
-            }
+            } while( i != s);
             
             if (ret != -1)
                 break;
